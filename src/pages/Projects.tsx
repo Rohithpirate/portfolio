@@ -52,7 +52,7 @@ const Projects = () => {
 
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouse = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
     const y = ((e.clientY - rect.top) / rect.height - 0.5) * -20;
