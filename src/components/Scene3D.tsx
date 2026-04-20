@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, OrbitControls, Sphere, Torus, Icosahedron } from "@react-three/drei";
+import { Float, MeshDistortMaterial, OrbitControls, Sphere, Torus, Icosahedron, Environment } from "@react-three/drei";
 import { Suspense } from "react";
 
 interface Scene3DProps {
@@ -20,12 +20,21 @@ const Scene3D = ({ variant = "hero", interactive = false }: Scene3DProps) => {
         <directionalLight position={[5, 5, 5]} intensity={1} color="#c084fc" />
         <directionalLight position={[-5, -5, 5]} intensity={0.6} color="#60a5fa" />
         <pointLight position={[0, 0, 5]} intensity={0.8} color="#f472b6" />
+        <Environment preset="city" />
 
         {variant === "hero" && (
           <>
             <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
               <Sphere args={[1.4, 64, 64]} position={[0, 0, 0]}>
-                <MeshDistortMaterial color="#a855f7" distort={0.45} speed={2.5} roughness={0.1} metalness={0.6} />
+                <MeshDistortMaterial
+                  color="#c084fc"
+                  distort={0.6}
+                  speed={3}
+                  roughness={0.05}
+                  metalness={1}
+                  emissive="#7c3aed"
+                  emissiveIntensity={0.15}
+                />
               </Sphere>
             </Float>
             <Float speed={1.5} rotationIntensity={2} floatIntensity={1.5}>
@@ -55,7 +64,7 @@ const Scene3D = ({ variant = "hero", interactive = false }: Scene3DProps) => {
           <>
             <Float speed={1.5} rotationIntensity={2} floatIntensity={2}>
               <Icosahedron args={[1.3, 1]} position={[0, 0, 0]}>
-                <MeshDistortMaterial color="#8b5cf6" distort={0.3} speed={2} roughness={0.2} metalness={0.7} />
+                <MeshDistortMaterial color="#a78bfa" distort={0.55} speed={2.5} roughness={0.05} metalness={1} emissive="#6d28d9" emissiveIntensity={0.12} />
               </Icosahedron>
             </Float>
             <Float speed={2} rotationIntensity={1} floatIntensity={1.5}>
@@ -75,7 +84,7 @@ const Scene3D = ({ variant = "hero", interactive = false }: Scene3DProps) => {
           <>
             <Float speed={2.5} rotationIntensity={2} floatIntensity={1.5}>
               <Torus args={[1.2, 0.35, 32, 100]} position={[0, 0, 0]} rotation={[0.5, 0, 0]}>
-                <MeshDistortMaterial color="#ec4899" distort={0.25} speed={2} roughness={0.15} metalness={0.8} />
+                <MeshDistortMaterial color="#f0abfc" distort={0.5} speed={2.5} roughness={0.05} metalness={1} emissive="#a21caf" emissiveIntensity={0.12} />
               </Torus>
             </Float>
             <Float speed={1.5} rotationIntensity={1} floatIntensity={2}>
@@ -94,7 +103,7 @@ const Scene3D = ({ variant = "hero", interactive = false }: Scene3DProps) => {
         {variant === "minimal" && (
           <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
             <Icosahedron args={[1, 0]} position={[0, 0, 0]}>
-              <MeshDistortMaterial color="#a855f7" distort={0.3} speed={2} roughness={0.2} metalness={0.7} />
+              <MeshDistortMaterial color="#c084fc" distort={0.55} speed={2.5} roughness={0.05} metalness={1} emissive="#7c3aed" emissiveIntensity={0.12} />
             </Icosahedron>
           </Float>
         )}
