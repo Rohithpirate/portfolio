@@ -244,6 +244,29 @@
     will-change: transform, opacity;
     z-index: 9999;
   }
+
+  .caustics-layer {
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(ellipse at 20% 30%, hsl(200 90% 75% / 0.18) 0%, transparent 35%),
+      radial-gradient(ellipse at 70% 60%, hsl(280 90% 75% / 0.15) 0%, transparent 40%),
+      radial-gradient(ellipse at 40% 80%, hsl(320 85% 75% / 0.12) 0%, transparent 38%),
+      repeating-radial-gradient(circle at 50% 0%,
+        hsl(0 0% 100% / 0.08) 0px,
+        hsl(0 0% 100% / 0) 60px,
+        hsl(0 0% 100% / 0.06) 120px);
+    mix-blend-mode: screen;
+    animation: caustics-drift 18s ease-in-out infinite;
+    filter: blur(1px);
+    opacity: 0.85;
+  }
+  .caustics-layer--alt {
+    animation-duration: 26s;
+    animation-direction: reverse;
+    opacity: 0.55;
+    filter: blur(2px) hue-rotate(40deg);
+  }
 }
 
 @keyframes float {
@@ -286,4 +309,48 @@
 @keyframes liquid-wipe-in {
   0% { clip-path: circle(0% at 50% 50%); opacity: 0.6; }
   100% { clip-path: circle(150% at 50% 50%); opacity: 1; }
+}
+
+/* Underwater scene animations */
+@keyframes swim-across {
+  0%   { transform: translateX(0) translateY(0); }
+  25%  { transform: translateX(35vw) translateY(-14px); }
+  50%  { transform: translateX(60vw) translateY(8px); }
+  75%  { transform: translateX(85vw) translateY(-10px); }
+  100% { transform: translateX(130vw) translateY(0); }
+}
+@keyframes fish-wobble {
+  0%, 100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg); }
+}
+@keyframes tail-flick {
+  0%, 100% { transform: scaleX(1) scaleY(1); }
+  50%      { transform: scaleX(0.85) scaleY(1.15); }
+}
+@keyframes jelly-rise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translateY(-60vh) translateX(30px); }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-120vh) translateX(-20px); opacity: 0; }
+}
+@keyframes jelly-pulse {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50%      { transform: scaleY(0.88) scaleX(1.08); }
+}
+@keyframes tentacle {
+  0%, 100% { transform: rotate(-4deg); }
+  50%      { transform: rotate(4deg); }
+}
+@keyframes bubble-rise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.9; }
+  50%  { transform: translateY(-55vh) translateX(15px); }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(-110vh) translateX(-10px); opacity: 0; }
+}
+@keyframes caustics-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(3%, -2%) scale(1.05); }
+  66%      { transform: translate(-2%, 3%) scale(0.97); }
 }
