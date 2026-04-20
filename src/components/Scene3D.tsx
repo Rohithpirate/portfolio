@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, OrbitControls, Sphere, Torus, Icosahedron } from "@react-three/drei";
+import { Float, MeshDistortMaterial, OrbitControls, Sphere, Torus, Icosahedron, Environment } from "@react-three/drei";
 import { Suspense } from "react";
 
 interface Scene3DProps {
@@ -20,12 +20,21 @@ const Scene3D = ({ variant = "hero", interactive = false }: Scene3DProps) => {
         <directionalLight position={[5, 5, 5]} intensity={1} color="#c084fc" />
         <directionalLight position={[-5, -5, 5]} intensity={0.6} color="#60a5fa" />
         <pointLight position={[0, 0, 5]} intensity={0.8} color="#f472b6" />
+        <Environment preset="city" />
 
         {variant === "hero" && (
           <>
             <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
               <Sphere args={[1.4, 64, 64]} position={[0, 0, 0]}>
-                <MeshDistortMaterial color="#a855f7" distort={0.45} speed={2.5} roughness={0.1} metalness={0.6} />
+                <MeshDistortMaterial
+                  color="#c084fc"
+                  distort={0.6}
+                  speed={3}
+                  roughness={0.05}
+                  metalness={1}
+                  emissive="#7c3aed"
+                  emissiveIntensity={0.15}
+                />
               </Sphere>
             </Float>
             <Float speed={1.5} rotationIntensity={2} floatIntensity={1.5}>
