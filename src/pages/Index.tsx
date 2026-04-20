@@ -53,7 +53,7 @@ const Index = () => {
               { v: "4+", l: "Projects" },
               { v: "2", l: "Tracks" },
             ].map((s) => (
-              <div key={s.l} className="glass rounded-2xl p-4 text-center tilt-card">
+              <div key={s.l} className="glass rounded-2xl p-4 text-center tilt-card metal-shine">
                 <div className="text-2xl font-bold gradient-text">{s.v}</div>
                 <div className="text-xs text-muted-foreground mt-1">{s.l}</div>
               </div>
@@ -103,7 +103,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="glass-strong rounded-3xl p-8 tilt-card"
+              className="glass-strong rounded-3xl p-8 tilt-card metal-shine"
             >
               <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-4 shadow-glow`}>
                 <card.icon className="w-7 h-7 text-primary-foreground" />
