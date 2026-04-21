@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import ResumeTilt from "@/components/three/ResumeTilt";
 import { Download, FileText, Code2, BarChart3 } from "lucide-react";
 import fullStackImg from "@/assets/resume-fullstack.jpg";
 import dataAnalystImg from "@/assets/resume-dataanalyst.jpg";
@@ -62,11 +63,13 @@ const Resume = () => {
                 </a>
               </div>
 
-              <div className="glass-strong rounded-3xl p-4 sm:p-6 shadow-3d tilt-card">
-                <a href={r.file} download className="block">
-                  <img src={r.img} alt={`${r.title} resume preview`} loading="lazy" className="w-full h-auto rounded-xl shadow-elegant" />
-                </a>
-              </div>
+              <ResumeTilt>
+                <div className="glass-strong rounded-3xl p-4 sm:p-6 shadow-3d">
+                  <a href={r.file} download className="block">
+                    <img src={r.img} alt={`${r.title} resume preview`} loading="lazy" className="w-full h-auto rounded-xl shadow-elegant" />
+                  </a>
+                </div>
+              </ResumeTilt>
             </div>
           </motion.section>
         ))}
