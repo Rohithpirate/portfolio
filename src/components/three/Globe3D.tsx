@@ -22,7 +22,7 @@ const toXYZ = (lat: number, lon: number, r = 1.5) => {
 };
 
 const Globe = () => {
-  const ref = useRef<Group>(null);
+  const ref = useRef<any>(null);
   useFrame((_, dt) => {
     if (ref.current) ref.current.rotation.y += dt * 0.25;
   });

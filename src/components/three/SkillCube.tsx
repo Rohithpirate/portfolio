@@ -13,7 +13,7 @@ const FACES = [
 ];
 
 const Cube = ({ hovered }: { hovered: boolean }) => {
-  const ref = useRef<Mesh>(null);
+  const ref = useRef<any>(null);
   useFrame((_, dt) => {
     if (!ref.current) return;
     const speed = hovered ? 1.6 : 0.4;

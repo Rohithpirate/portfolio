@@ -5,8 +5,8 @@ import { Group, MathUtils } from "three";
 type FishCfg = { color: string; emissive: string; speed: number; radius: number; offset: number; y: number; scale: number };
 
 const Fish = ({ cfg }: { cfg: FishCfg }) => {
-  const group = useRef<Group>(null);
-  const tail = useRef<Group>(null);
+  const group = useRef<any>(null);
+  const tail = useRef<any>(null);
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime() * cfg.speed + cfg.offset;
     if (group.current) {

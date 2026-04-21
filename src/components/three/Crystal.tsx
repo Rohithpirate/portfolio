@@ -4,7 +4,7 @@ import { Mesh } from "three";
 import { Float, MeshTransmissionMaterial, Octahedron } from "@react-three/drei";
 
 const CrystalMesh = () => {
-  const ref = useRef<Mesh>(null);
+  const ref = useRef<any>(null);
   useFrame((_, dt) => {
     if (ref.current) {
       ref.current.rotation.y += dt * 0.6;

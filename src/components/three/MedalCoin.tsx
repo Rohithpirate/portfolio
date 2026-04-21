@@ -4,7 +4,7 @@ import { Mesh } from "three";
 import { Float } from "@react-three/drei";
 
 const Coin = () => {
-  const ref = useRef<Mesh>(null);
+  const ref = useRef<any>(null);
   useFrame((_, dt) => {
     if (ref.current) ref.current.rotation.y += dt * 1.4;
   });

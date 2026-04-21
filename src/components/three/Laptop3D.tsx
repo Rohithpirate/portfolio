@@ -4,7 +4,7 @@ import { Group } from "three";
 import { Float } from "@react-three/drei";
 
 const Laptop = () => {
-  const group = useRef<Group>(null);
+  const group = useRef<any>(null);
   useFrame(({ mouse }) => {
     if (!group.current) return;
     const tx = mouse.x * 0.4;
