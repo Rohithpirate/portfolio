@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { Download, Award, Sparkles, X } from "lucide-react";
 import { useState } from "react";
-import { lazy, Suspense } from "react";
-const MedalCoin = lazy(() => import("@/components/three/MedalCoin"));
 
 import aiWorkshop from "@/assets/cert-ai-workshop.jpg";
 import courseraExcel from "@/assets/cert-coursera-excel.jpg";
@@ -55,8 +53,7 @@ const Certificates = () => {
             transition={{ delay: (i % 6) * 0.08 }}
             className="group"
           >
-            <div className="cert-frame tilt-card relative">
-              <Suspense fallback={null}><MedalCoin /></Suspense>
+            <div className="cert-frame tilt-card">
               <button onClick={() => setZoom(c)} className="block w-full" aria-label={`Open ${c.title}`}>
                 <img src={c.img} alt={c.title} loading="lazy" className="w-full h-auto rounded-md aspect-[4/3] object-cover" />
               </button>

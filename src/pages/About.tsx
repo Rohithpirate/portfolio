@@ -6,9 +6,6 @@ import {
 } from "lucide-react";
 import Scene3D from "@/components/Scene3D";
 import { Link } from "react-router-dom";
-import { lazy, Suspense } from "react";
-const SkillCube = lazy(() => import("@/components/three/SkillCube"));
-const Globe3D = lazy(() => import("@/components/three/Globe3D"));
 
 const skills = {
   Frontend: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
@@ -134,16 +131,6 @@ const About = () => {
         <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl sm:text-4xl font-display font-bold text-center mb-10">
           My <span className="gradient-text">Skills</span>
         </motion.h2>
-        <div className="grid lg:grid-cols-2 gap-6 mb-8">
-          <div className="glass-strong rounded-3xl p-6">
-            <h3 className="font-display font-bold text-lg mb-2 text-center">Skill Cube</h3>
-            <Suspense fallback={<div className="h-[320px]" />}><SkillCube /></Suspense>
-          </div>
-          <div className="glass-strong rounded-3xl p-6">
-            <h3 className="font-display font-bold text-lg mb-2 text-center">Where I'd Love to Work</h3>
-            <Suspense fallback={<div className="h-[320px]" />}><Globe3D /></Suspense>
-          </div>
-        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {Object.entries(skills).map(([cat, items], i) => {
             const icons: Record<string, typeof Code> = {
