@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, BarChart3, Sparkles, Download } from "lucide-react";
 import Scene3D from "@/components/Scene3D";
+import { lazy, Suspense } from "react";
+const Crystal = lazy(() => import("@/components/three/Crystal"));
+const Laptop3D = lazy(() => import("@/components/three/Laptop3D"));
 
 const Index = () => {
   return (
     <div className="px-4">
+      <Suspense fallback={null}><Crystal /></Suspense>
       <section className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-center min-h-[calc(100vh-8rem)]">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -68,6 +72,7 @@ const Index = () => {
           className="relative h-[400px] sm:h-[500px] lg:h-[600px]"
         >
           <Scene3D variant="hero" interactive />
+          <Suspense fallback={null}><Laptop3D /></Suspense>
           <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background/20 pointer-events-none" />
         </motion.div>
       </section>
