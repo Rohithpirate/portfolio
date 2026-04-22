@@ -116,6 +116,57 @@ const Contact = () => {
           </motion.a>
         ))}
       </div>
+
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="glass-strong rounded-3xl p-6 sm:p-8 mt-12 mb-12"
+      >
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-glow">
+            <Briefcase className="w-6 h-6 text-primary-foreground" />
+          </div>
+          <div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold">Hire Me — <span className="gradient-text">Freelance</span></h2>
+            <p className="text-sm text-muted-foreground">Tell me about your project and I'll get back within 24h.</p>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Name *</Label>
+            <Input id="name" name="name" value={form.name} onChange={handleChange} placeholder="Jane Doe" maxLength={100} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email *</Label>
+            <Input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="jane@company.com" maxLength={255} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="projectType">Project Type *</Label>
+            <Input id="projectType" name="projectType" value={form.projectType} onChange={handleChange} placeholder="Web app, Dashboard, Data analysis…" maxLength={100} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="budget">Budget (optional)</Label>
+            <Input id="budget" name="budget" value={form.budget} onChange={handleChange} placeholder="$500 - $2000" maxLength={50} />
+          </div>
+          <div className="space-y-2 sm:col-span-2">
+            <Label htmlFor="timeline">Timeline (optional)</Label>
+            <Input id="timeline" name="timeline" value={form.timeline} onChange={handleChange} placeholder="2-3 weeks" maxLength={50} />
+          </div>
+          <div className="space-y-2 sm:col-span-2">
+            <Label htmlFor="message">Project Details *</Label>
+            <Textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Describe what you need built, key features, and any references…" rows={5} maxLength={2000} />
+          </div>
+          <div className="sm:col-span-2 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+            <p className="text-xs text-muted-foreground">Opens your email app with details prefilled.</p>
+            <Button type="submit" disabled={sending} className="bg-gradient-to-r from-primary to-accent hover:opacity-90 shadow-glow">
+              <Send className="w-4 h-4 mr-2" />
+              {sending ? "Opening…" : "Send Inquiry"}
+            </Button>
+          </div>
+        </form>
+      </motion.section>
     </div>
   );
 };
