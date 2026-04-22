@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import {
   GraduationCap, Briefcase, Sparkles, Code, Database, PenTool,
   Trophy, Target, Heart, Lightbulb, Globe, Rocket, Coffee,
-  MapPin, Calendar, Mail, Award, BookOpen, Zap
+  MapPin, Calendar, Mail, Award, BookOpen, Zap,
+  Smartphone, BarChart3, Bot, Palette, Headphones, Music,
+  Gamepad2, Camera, Quote, CheckCircle2, Wrench
 } from "lucide-react";
 import Scene3D from "@/components/Scene3D";
 import { Link } from "react-router-dom";
