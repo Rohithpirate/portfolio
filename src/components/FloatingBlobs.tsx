@@ -1,4 +1,16 @@
+import { useIsMobile } from "@/hooks/use-mobile";
+
 const FloatingBlobs = () => {
+  const isMobile = useIsMobile();
+  // On mobile, render fewer/smaller blobs with lighter blur to avoid jank.
+  if (isMobile) {
+    return (
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[20rem] h-[20rem] rounded-full bg-primary/20 blur-2xl" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[20rem] h-[20rem] rounded-full bg-accent/20 blur-2xl" />
+      </div>
+    );
+  }
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] rounded-full bg-primary/30 blur-3xl animate-blob" />
