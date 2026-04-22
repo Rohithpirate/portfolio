@@ -34,22 +34,6 @@ const projects = [
     gradient: "from-primary to-secondary",
     image: "https://images.unsplash.com/photo-1545665277-5937489579f2?auto=format&fit=crop&w=900&q=80",
   },
-  {
-    title: "Data Insights Dashboard",
-    description: "Interactive analytics dashboard concept for visualizing KPIs with charts, filters and clean UI — built using modern data viz patterns.",
-    url: "https://github.com/Rohithpirate",
-    tags: ["Data Viz", "Dashboard", "Charts", "UX"],
-    gradient: "from-accent to-primary",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "SQL Learning Tracker",
-    description: "A practice tracker for SQL queries and exercises, helping log progress, query patterns and key concepts as I deepen backend skills.",
-    url: "https://github.com/Rohithpirate",
-    tags: ["SQL", "Learning", "Backend"],
-    gradient: "from-secondary to-accent",
-    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=900&q=80",
-  },
 ];
 
 // Live screenshot from the actual deployed site (used as fallback when no static image)
