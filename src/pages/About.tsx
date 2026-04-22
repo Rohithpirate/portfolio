@@ -46,7 +46,7 @@ const About = () => {
             Hi, I'm <span className="gradient-text">Rohith K</span> 👋
           </h1>
           <p className="text-lg text-foreground/80 leading-relaxed mb-4">
-            I'm a passionate <strong>Full Stack Developer</strong> and aspiring <strong>Data Analyst</strong> from <strong>Vellore, Tamil Nadu</strong>. Currently in my third year of B.E. Electronics & Communication Engineering at <strong>Thanthai Periyar Government Institute of Technology</strong>.
+            I'm a <strong>Website Developer</strong> who builds both <strong>frontend and backend</strong> — and an aspiring <strong>Data Analyst</strong> from <strong>Vellore, Tamil Nadu</strong>. From responsive UIs to APIs and server logic, I handle the full stack end-to-end. Currently in my third year of B.E. Electronics & Communication Engineering at <strong>Thanthai Periyar Government Institute of Technology</strong>.
           </p>
           <p className="text-lg text-foreground/80 leading-relaxed mb-6">
             I love turning ideas into living, breathing products — from AI chatbots and bakery websites to Power Query dashboards. Every line of code I write is an opportunity to learn something new and ship something real.
