@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, OrbitControls, Sphere, Torus, Icosahedron, Environment } from "@react-three/drei";
 import { Suspense } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Scene3DProps {
   variant?: "hero" | "about" | "contact" | "minimal";
@@ -8,11 +9,13 @@ interface Scene3DProps {
 }
 
 const Scene3D = ({ variant = "hero", interactive = false }: Scene3DProps) => {
+  const isMobile = useIsMobile();
   return (
     <Canvas
       camera={{ position: [0, 0, 6], fov: 50 }}
-      dpr={[1, 2]}
-      gl={{ antialias: true, alpha: true }}
+      dpr={isMobile ? [1, 1.25] : [1, 2]}
+      gl={{ antialias: !isMobile, alpha: true, powerPreference: "high-performance" }}
+      frameloop="always"
       style={{ background: "transparent" }}
     >
       <Suspense fallback={null}>
@@ -20,7 +23,7 @@ const Scene3D = ({ variant = "hero", interactive = false }: Scene3DProps) => {
         <directionalLight position={[5, 5, 5]} intensity={1} color="#c084fc" />
         <directionalLight position={[-5, -5, 5]} intensity={0.6} color="#60a5fa" />
         <pointLight position={[0, 0, 5]} intensity={0.8} color="#f472b6" />
-        <Environment preset="city" />
+        {!isMobile && <Environment preset="city" />}
 
         {variant === "hero" && (
           <>
@@ -37,26 +40,30 @@ const Scene3D = ({ variant = "hero", interactive = false }: Scene3DProps) => {
                 />
               </Sphere>
             </Float>
-            <Float speed={1.5} rotationIntensity={2} floatIntensity={1.5}>
-              <Torus args={[0.6, 0.18, 32, 100]} position={[2.5, 1.2, -1]}>
-                <meshStandardMaterial color="#ec4899" metalness={0.7} roughness={0.2} />
-              </Torus>
-            </Float>
-            <Float speed={1.8} rotationIntensity={1} floatIntensity={2}>
-              <Icosahedron args={[0.5, 0]} position={[-2.5, -1, -1]}>
-                <meshStandardMaterial color="#38bdf8" metalness={0.8} roughness={0.15} />
-              </Icosahedron>
-            </Float>
-            <Float speed={1.2} rotationIntensity={2.5} floatIntensity={1}>
-              <Torus args={[0.35, 0.12, 16, 60]} position={[-2, 1.8, 0]}>
-                <meshStandardMaterial color="#fbbf24" metalness={0.9} roughness={0.1} />
-              </Torus>
-            </Float>
-            <Float speed={1.6} rotationIntensity={1.5} floatIntensity={1.8}>
-              <Icosahedron args={[0.35, 0]} position={[2, -1.8, 0.5]}>
-                <meshStandardMaterial color="#34d399" metalness={0.7} roughness={0.2} />
-              </Icosahedron>
-            </Float>
+            {!isMobile && (
+              <>
+                <Float speed={1.5} rotationIntensity={2} floatIntensity={1.5}>
+                  <Torus args={[0.6, 0.18, 32, 100]} position={[2.5, 1.2, -1]}>
+                    <meshStandardMaterial color="#ec4899" metalness={0.7} roughness={0.2} />
+                  </Torus>
+                </Float>
+                <Float speed={1.8} rotationIntensity={1} floatIntensity={2}>
+                  <Icosahedron args={[0.5, 0]} position={[-2.5, -1, -1]}>
+                    <meshStandardMaterial color="#38bdf8" metalness={0.8} roughness={0.15} />
+                  </Icosahedron>
+                </Float>
+                <Float speed={1.2} rotationIntensity={2.5} floatIntensity={1}>
+                  <Torus args={[0.35, 0.12, 16, 60]} position={[-2, 1.8, 0]}>
+                    <meshStandardMaterial color="#fbbf24" metalness={0.9} roughness={0.1} />
+                  </Torus>
+                </Float>
+                <Float speed={1.6} rotationIntensity={1.5} floatIntensity={1.8}>
+                  <Icosahedron args={[0.35, 0]} position={[2, -1.8, 0.5]}>
+                    <meshStandardMaterial color="#34d399" metalness={0.7} roughness={0.2} />
+                  </Icosahedron>
+                </Float>
+              </>
+            )}
           </>
         )}
 
