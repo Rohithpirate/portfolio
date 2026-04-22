@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import {
   GraduationCap, Briefcase, Sparkles, Code, Database, PenTool,
   Trophy, Target, Heart, Lightbulb, Globe, Rocket, Coffee,
-  MapPin, Calendar, Mail, Award, BookOpen, Zap
+  MapPin, Calendar, Mail, Award, BookOpen, Zap,
+  Smartphone, BarChart3, Bot, Palette, Headphones, Music,
+  Gamepad2, Camera, Quote, CheckCircle2, Wrench
 } from "lucide-react";
 import Scene3D from "@/components/Scene3D";
 import { Link } from "react-router-dom";
@@ -301,6 +303,133 @@ const About = () => {
           </ul>
         </motion.div>
       </section>
+
+      {/* CORE VALUES */}
+      <section className="mb-20">
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl sm:text-4xl font-display font-bold text-center mb-10">
+          What I <span className="gradient-text">Stand For</span>
+        </motion.h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { icon: CheckCircle2, title: "Ship It", desc: "Done > perfect. I deploy real projects, get user feedback, and iterate fast." },
+            { icon: Lightbulb, title: "Stay Curious", desc: "Every bug is a lesson. I read docs, watch tutorials, and break things to learn." },
+            { icon: Heart, title: "Build For Humans", desc: "Code is just the means — solving real problems for real people is the goal." },
+            { icon: Target, title: "Own The Outcome", desc: "I take responsibility from first commit to last bug fix in production." },
+            { icon: Zap, title: "Move Fast, Test Fast", desc: "Quick prototypes, honest validation, no over-engineering." },
+            { icon: Globe, title: "Open To Learn", desc: "Feedback from seniors and teammates is gold — I actively seek it." },
+          ].map((v, i) => (
+            <motion.div
+              key={v.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="glass-strong rounded-2xl p-6 tilt-card"
+            >
+              <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-3 shadow-glow">
+                <v.icon className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <h3 className="font-display font-bold text-lg mb-1">{v.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* WHAT I CAN BUILD FOR YOU */}
+      <section className="mb-20">
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl sm:text-4xl font-display font-bold text-center mb-10">
+          What I Can <span className="gradient-text">Build For You</span>
+        </motion.h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { icon: Smartphone, title: "Responsive Websites", desc: "Business sites, landing pages, portfolios — fast and mobile-first." },
+            { icon: Bot, title: "AI Chatbots", desc: "Custom chatbots with API integration for support or automation." },
+            { icon: BarChart3, title: "Data Dashboards", desc: "Excel, Power BI, and Python dashboards turning raw data into insight." },
+            { icon: Wrench, title: "Web App Features", desc: "Forms, auth, APIs, and full-stack features end-to-end." },
+          ].map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass-strong rounded-2xl p-6 tilt-card"
+            >
+              <div className="w-12 h-12 rounded-xl bg-gradient-secondary flex items-center justify-center mb-3 shadow-glow">
+                <s.icon className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <h3 className="font-display font-bold text-base mb-1">{s.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* CURRENTLY */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="glass-strong rounded-3xl p-8 sm:p-10 mb-20 tilt-card"
+      >
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-glow animate-pulse">
+            <Zap className="w-6 h-6 text-primary-foreground" />
+          </div>
+          <h2 className="font-display text-3xl font-bold">Currently <span className="gradient-text">Up To</span></h2>
+        </div>
+        <ul className="grid sm:grid-cols-2 gap-4 text-foreground/80">
+          <li className="flex items-start gap-3"><span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0 animate-pulse" /> <span><strong>Studying:</strong> Advanced React patterns and SQL window functions for analytics roles.</span></li>
+          <li className="flex items-start gap-3"><span className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0 animate-pulse" /> <span><strong>Building:</strong> A Power BI sales dashboard from scratch using Quantium-style data.</span></li>
+          <li className="flex items-start gap-3"><span className="w-2 h-2 rounded-full bg-secondary mt-2 shrink-0 animate-pulse" /> <span><strong>Reading:</strong> Designing Data-Intensive Applications and Refactoring UI.</span></li>
+          <li className="flex items-start gap-3"><span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0 animate-pulse" /> <span><strong>Looking for:</strong> Summer 2026 internship in Full Stack or Data Analytics.</span></li>
+        </ul>
+      </motion.section>
+
+      {/* BEYOND CODE */}
+      <section className="mb-20">
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl sm:text-4xl font-display font-bold text-center mb-10">
+          Beyond <span className="gradient-text">The Code</span>
+        </motion.h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
+          {[
+            { icon: Music, label: "Music", value: "Lo-fi & Tamil hits" },
+            { icon: Gamepad2, label: "Gaming", value: "FPS & strategy" },
+            { icon: Camera, label: "Photography", value: "Street & nature" },
+            { icon: Palette, label: "Design", value: "Figma tinkerer" },
+          ].map((h, i) => (
+            <motion.div
+              key={h.label}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="glass-strong rounded-2xl p-5 text-center tilt-card"
+            >
+              <div className="w-10 h-10 mx-auto rounded-xl bg-gradient-primary flex items-center justify-center mb-2 shadow-glow">
+                <h.icon className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">{h.label}</div>
+              <div className="font-display font-semibold text-sm mt-1">{h.value}</div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* QUOTE */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="glass-strong rounded-3xl p-8 sm:p-12 mb-20 text-center tilt-card relative overflow-hidden"
+      >
+        <Quote className="w-12 h-12 mx-auto mb-4 text-primary opacity-60" />
+        <p className="text-xl sm:text-2xl font-display italic max-w-3xl mx-auto leading-relaxed mb-4">
+          "I don't just want to write code that works — I want to build things that <span className="gradient-text">people actually use</span> and come back to."
+        </p>
+        <div className="text-sm text-muted-foreground">— My personal mission</div>
+      </motion.section>
 
       {/* WHAT I'M LOOKING FOR + CTA */}
       <motion.section

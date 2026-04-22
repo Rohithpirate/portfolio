@@ -26,6 +26,10 @@ const projects = [
   },
 ];
 
+// Live screenshot from the actual deployed site (free, no API key)
+const liveShot = (url: string) =>
+  `https://image.thum.io/get/width/900/crop/600/noanimate/${url}`;
+
 const Projects = () => {
   return (
     <div className="px-4 max-w-7xl mx-auto">
@@ -77,13 +81,19 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       }}
       className="group block glass-strong rounded-3xl overflow-hidden cursor-pointer hover:shadow-3d preserve-3d"
     >
-      <div className={`h-40 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
-        <div className="absolute inset-0 bg-gradient-mesh opacity-50" />
-        <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-white/30 blur-2xl animate-float" />
+      <div className={`h-48 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
+        <img
+          src={liveShot(project.url)}
+          alt={`${project.title} live site preview`}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         <div className="absolute top-4 right-4 w-10 h-10 rounded-xl glass-strong flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
           <ExternalLink className="w-4 h-4" />
         </div>
-        <div className="absolute bottom-4 left-4 text-primary-foreground font-display font-bold text-lg drop-shadow-lg">
+        <div className="absolute bottom-3 left-4 text-white font-display font-bold text-lg drop-shadow-lg">
           0{index + 1}
         </div>
       </div>
