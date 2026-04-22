@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Sparkles } from "lucide-react";
 import { useState } from "react";
+import pirateAuraImg from "@/assets/project-pirate-aura.png";
 
 const projects = [
   {
@@ -9,6 +10,7 @@ const projects = [
     url: "https://pirate-aura.onrender.com",
     tags: ["AI", "API", "JavaScript", "Web App"],
     gradient: "from-primary to-accent",
+    image: pirateAuraImg,
   },
   {
     title: "Renugambal Sweets & Bakery",
@@ -24,9 +26,33 @@ const projects = [
     tags: ["HTML", "CSS", "UI Design"],
     gradient: "from-secondary to-primary",
   },
+  {
+    title: "Portfolio 3D — This Site",
+    description: "Immersive 3D portfolio with React, Three.js, Framer Motion and Tailwind. Glass morphism, cursor trails and animated scenes throughout.",
+    url: "https://github.com/Rohithpirate",
+    tags: ["React", "Three.js", "Framer Motion", "Tailwind"],
+    gradient: "from-primary to-secondary",
+    image: "https://images.unsplash.com/photo-1545665277-5937489579f2?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "Data Insights Dashboard",
+    description: "Interactive analytics dashboard concept for visualizing KPIs with charts, filters and clean UI — built using modern data viz patterns.",
+    url: "https://github.com/Rohithpirate",
+    tags: ["Data Viz", "Dashboard", "Charts", "UX"],
+    gradient: "from-accent to-primary",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "SQL Learning Tracker",
+    description: "A practice tracker for SQL queries and exercises, helping log progress, query patterns and key concepts as I deepen backend skills.",
+    url: "https://github.com/Rohithpirate",
+    tags: ["SQL", "Learning", "Backend"],
+    gradient: "from-secondary to-accent",
+    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=900&q=80",
+  },
 ];
 
-// Live screenshot from the actual deployed site (free, no API key)
+// Live screenshot from the actual deployed site (used as fallback when no static image)
 const liveShot = (url: string) =>
   `https://image.thum.io/get/width/900/crop/600/noanimate/${url}`;
 
@@ -83,7 +109,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
     >
       <div className={`h-48 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
         <img
-          src={liveShot(project.url)}
+          src={project.image ?? liveShot(project.url)}
           alt={`${project.title} live site preview`}
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
