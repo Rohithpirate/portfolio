@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Instagram, Mail, MessageCircle, MapPin, Sparkles } from "lucide-react";
 import Scene3D from "@/components/Scene3D";
 import { socials } from "@/lib/socials";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
+import { z } from "zod";
+import { Send, Briefcase } from "lucide-react";
 
 const links = [
   { icon: Github, label: "GitHub", value: "@Rohithpirate", href: socials.github, gradient: "from-foreground to-muted-foreground" },
@@ -12,6 +20,58 @@ const links = [
 ];
 
 const Contact = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    projectType: "",
+    budget: "",
+    timeline: "",
+    message: "",
+  });
+  const [sending, setSending] = useState(false);
+
+  const schema = z.object({
+    name: z.string().trim().min(1, "Name is required").max(100),
+    email: z.string().trim().email("Invalid email").max(255),
+    projectType: z.string().trim().min(1, "Project type is required").max(100),
+    budget: z.string().trim().max(50).optional().or(z.literal("")),
+    timeline: z.string().trim().max(50).optional().or(z.literal("")),
+    message: z.string().trim().min(10, "Message must be at least 10 characters").max(2000),
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = schema.safeParse(form);
+    if (!result.success) {
+      toast({
+        title: "Please check the form",
+        description: result.error.issues[0]?.message ?? "Invalid input",
+        variant: "destructive",
+      });
+      return;
+    }
+    setSending(true);
+    const subject = `Freelance Inquiry: ${form.projectType} — ${form.name}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Project Type: ${form.projectType}`,
+      `Budget: ${form.budget || "Not specified"}`,
+      `Timeline: ${form.timeline || "Not specified"}`,
+      "",
+      "Message:",
+      form.message,
+    ].join("\n");
+    const mailto = `mailto:${socials.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    toast({ title: "Opening your email app", description: "Your message is ready to send." });
+    setTimeout(() => setSending(false), 1200);
+  };
+
   return (
     <div className="px-4 max-w-6xl mx-auto">
       <section className="grid lg:grid-cols-2 gap-8 items-center mb-12">
