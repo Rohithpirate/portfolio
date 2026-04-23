@@ -47,15 +47,21 @@ const Certificates = () => {
         {certificates.map((c, i) => (
           <motion.div
             key={c.title + i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: (i % 6) * 0.08 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: Math.min(i * 0.04, 0.3), duration: 0.3 }}
             className="group"
           >
             <div className="cert-frame tilt-card">
               <button onClick={() => setZoom(c)} className="block w-full" aria-label={`Open ${c.title}`}>
-                <img src={c.img} alt={c.title} loading="lazy" className="w-full h-auto rounded-md aspect-[4/3] object-cover" />
+                <img
+                  src={c.img}
+                  alt={c.title}
+                  loading={i < 6 ? "eager" : "lazy"}
+                  decoding="async"
+                  fetchPriority={i < 3 ? "high" : "auto"}
+                  className="w-full h-auto rounded-md aspect-[4/3] object-cover"
+                />
               </button>
             </div>
             <div className="mt-4 px-2">
