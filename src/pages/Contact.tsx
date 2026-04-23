@@ -75,6 +75,11 @@ const Contact = () => {
 
   return (
     <div className="px-4 max-w-6xl mx-auto">
+      <SEO
+        title="Contact Rohith K — Hire a Full Stack Developer"
+        description="Get in touch with Rohith K for freelance, internships, or collaboration. Reach out via email, LinkedIn, WhatsApp, or the contact form."
+        path="/contact"
+      />
       <section className="grid lg:grid-cols-2 gap-8 items-center mb-12">
         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm font-medium mb-4">

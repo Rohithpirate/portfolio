@@ -27,6 +27,11 @@ const resumes = [
 const Resume = () => {
   return (
     <div className="px-4 max-w-6xl mx-auto">
+      <SEO
+        title="Resume — Rohith K | Download CV"
+        description="Download Rohith K's resumes — Full Stack Developer and Data Analyst editions. PDF format, ATS-friendly."
+        path="/resume"
+      />
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
         <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm font-medium mb-4">
           <FileText className="w-4 h-4 text-primary" /> Two Tracks
