@@ -2,10 +2,16 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, BarChart3, Sparkles, Download } from "lucide-react";
 import Scene3D from "@/components/Scene3D";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   return (
     <div className="px-4">
+      <SEO
+        title="Rohith K — Full Stack Developer & Data Analyst Portfolio"
+        description="Immersive 3D portfolio of Rohith K — Full Stack Developer and Data Analyst. Explore projects, certificates, and resume."
+        path="/"
+      />
       <section className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-center min-h-[calc(100vh-8rem)]">
         <motion.div
           initial={{ opacity: 0, x: -40 }}

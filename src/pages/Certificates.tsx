@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, Award, Sparkles, X } from "lucide-react";
 import { useState } from "react";
+import SEO from "@/components/SEO";
 
 import aiWorkshop from "@/assets/cert-ai-workshop.jpg";
 import courseraExcel from "@/assets/cert-coursera-excel.jpg";
@@ -31,6 +32,11 @@ const Certificates = () => {
 
   return (
     <div className="px-4 max-w-7xl mx-auto">
+      <SEO
+        title="Certificates — Rohith K | 10 Professional Certifications"
+        description="Explore Rohith K's 10 certifications in Data Analytics, AI, Excel, Power Query, UX Design and more — from Tata, Deloitte, Quantium, Google & Infosys."
+        path="/certificates"
+      />
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
         <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm font-medium mb-4">
           <Award className="w-4 h-4 text-primary" /> 10 Certifications

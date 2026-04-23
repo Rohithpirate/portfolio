@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github, Sparkles } from "lucide-react";
 import { useState } from "react";
 import pirateAuraImg from "@/assets/project-pirate-aura.png";
+import SEO from "@/components/SEO";
 
 const projects = [
   {
@@ -39,6 +40,11 @@ const projects = [
 const Projects = () => {
   return (
     <div className="px-4 max-w-7xl mx-auto">
+      <SEO
+        title="Projects — Rohith K | Web Development & AI Apps"
+        description="Hand-picked projects by Rohith K — AI chatbots, responsive business websites, and full-stack web apps built with modern tech."
+        path="/projects"
+      />
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
         <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm font-medium mb-4">
           <Sparkles className="w-4 h-4 text-primary" /> Selected Work
