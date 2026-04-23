@@ -36,10 +36,6 @@ const projects = [
   },
 ];
 
-// Live screenshot from the actual deployed site (used as fallback when no static image)
-const liveShot = (url: string) =>
-  `https://image.thum.io/get/width/900/crop/600/noanimate/${url}`;
-
 const Projects = () => {
   return (
     <div className="px-4 max-w-7xl mx-auto">
@@ -79,10 +75,9 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       href={project.url}
       target="_blank"
       rel="noreferrer"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.06, duration: 0.3 }}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       style={{
@@ -92,13 +87,17 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       className="group block glass-strong rounded-3xl overflow-hidden cursor-pointer hover:shadow-3d preserve-3d"
     >
       <div className={`h-48 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
-        <img
-          src={project.image ?? liveShot(project.url)}
-          alt={`${project.title} live site preview`}
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-        />
+        {project.image && (
+          <img
+            src={project.image}
+            alt={`${project.title} live site preview`}
+            loading={index < 3 ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={index < 2 ? "high" : "auto"}
+            className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         <div className="absolute top-4 right-4 w-10 h-10 rounded-xl glass-strong flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
           <ExternalLink className="w-4 h-4" />
