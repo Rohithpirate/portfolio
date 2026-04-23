@@ -37,6 +37,11 @@ const facts = [
 const About = () => {
   return (
     <div className="px-4 max-w-6xl mx-auto">
+      <SEO
+        title="About Rohith K — Full Stack Developer & Data Analyst"
+        description="Get to know Rohith K — a passionate frontend & backend web developer and data analyst. Skills, journey, and what drives me."
+        path="/about"
+      />
       {/* HERO */}
       <section className="grid lg:grid-cols-2 gap-8 items-center mb-20">
         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>

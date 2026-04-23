@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { Send, Briefcase } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const links = [
   { icon: Github, label: "GitHub", value: "@Rohithpirate", href: socials.github, gradient: "from-foreground to-muted-foreground" },

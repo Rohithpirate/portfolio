@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github, Sparkles } from "lucide-react";
 import { useState } from "react";
 import pirateAuraImg from "@/assets/project-pirate-aura.png";
+import SEO from "@/components/SEO";
 
 const projects = [
   {

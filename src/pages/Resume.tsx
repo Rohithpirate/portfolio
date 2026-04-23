@@ -3,6 +3,7 @@ import ResumeTilt from "@/components/three/ResumeTilt";
 import { Download, FileText, Code2, BarChart3 } from "lucide-react";
 import fullStackImg from "@/assets/resume-fullstack.jpg";
 import dataAnalystImg from "@/assets/resume-dataanalyst.jpg";
+import SEO from "@/components/SEO";
 
 const resumes = [
   {
