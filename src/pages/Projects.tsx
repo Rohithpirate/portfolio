@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github, Sparkles } from "lucide-react";
 import { useState } from "react";
 import pirateAuraImg from "@/assets/project-pirate-aura.png";
+import renugambalImg from "@/assets/project-renugambal.jpg";
+import kitchenImg from "@/assets/project-kitchen.jpg";
 import SEO from "@/components/SEO";
 
 const projects = [
@@ -19,6 +21,7 @@ const projects = [
     url: "https://rohithgraces.github.io/renugambal/",
     tags: ["HTML", "CSS", "Responsive", "Business Site"],
     gradient: "from-accent to-secondary",
+    image: renugambalImg,
   },
   {
     title: "Kitchen Menu Website",
@@ -26,6 +29,7 @@ const projects = [
     url: "https://rohithgraces.github.io/kitchen/",
     tags: ["HTML", "CSS", "UI Design"],
     gradient: "from-secondary to-primary",
+    image: kitchenImg,
   },
   {
     title: "Portfolio 3D — This Site",
