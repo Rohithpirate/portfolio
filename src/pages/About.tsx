@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import Scene3D from "@/components/Scene3D";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 const skills = {
   Frontend: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
