@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, BarChart3, Sparkles, Download } from "lucide-react";
-import Scene3D from "@/components/Scene3D";
+import RKGlobe from "@/components/three/RKGlobe";
 import SEO from "@/components/SEO";
 
 const Index = () => {
@@ -73,7 +73,7 @@ const Index = () => {
           transition={{ duration: 1, delay: 0.3 }}
           className="relative h-[400px] sm:h-[500px] lg:h-[600px]"
         >
-          <Scene3D variant="hero" interactive />
+          <RKGlobe interactive />
           <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background/20 pointer-events-none" />
         </motion.div>
       </section>
