@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Download, Award, Sparkles, X } from "lucide-react";
 import { useState } from "react";
 import SEO from "@/components/SEO";
+import Reveal from "@/components/Reveal";
 
 import aiWorkshop from "@/assets/cert-ai-workshop.jpg";
 import courseraExcel from "@/assets/cert-coursera-excel.jpg";
@@ -51,13 +52,7 @@ const Certificates = () => {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {certificates.map((c, i) => (
-          <motion.div
-            key={c.title + i}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: Math.min(i * 0.04, 0.3), duration: 0.3 }}
-            className="group"
-          >
+          <Reveal key={c.title + i} direction="up" delay={Math.min(i * 0.06, 0.4)} className="group">
             <div className="cert-frame tilt-card">
               <button onClick={() => setZoom(c)} className="block w-full" aria-label={`Open ${c.title}`}>
                 <img
@@ -89,7 +84,7 @@ const Certificates = () => {
                 </button>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
         ))}
       </div>
 

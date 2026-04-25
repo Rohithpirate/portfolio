@@ -5,6 +5,7 @@ import pirateAuraImg from "@/assets/project-pirate-aura.png";
 import renugambalImg from "@/assets/project-renugambal.jpg";
 import kitchenImg from "@/assets/project-kitchen.jpg";
 import SEO from "@/components/SEO";
+import Reveal from "@/components/Reveal";
 
 const projects = [
   {
@@ -63,7 +64,9 @@ const Projects = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((p, i) => (
-          <ProjectCard key={p.title} project={p} index={i} />
+          <Reveal key={p.title} direction="up" delay={Math.min(i * 0.08, 0.4)}>
+            <ProjectCard project={p} index={i} />
+          </Reveal>
         ))}
       </div>
     </div>
