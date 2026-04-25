@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Code2, BarChart3, Sparkles, Download } from "lucide-react";
 import RKGlobe from "@/components/three/RKGlobe";
 import SEO from "@/components/SEO";
+import TypewriterRoles from "@/components/TypewriterRoles";
+import Reveal from "@/components/Reveal";
 
 const Index = () => {
   return (
@@ -32,7 +34,16 @@ const Index = () => {
             Hi, I'm <span className="gradient-text">Rohith K</span>
           </h1>
           <h2 className="text-xl sm:text-2xl font-medium text-muted-foreground">
-            Full Stack Developer · Data Analyst · Problem Solver
+            I'm a{" "}
+            <TypewriterRoles
+              roles={[
+                "Full Stack Developer",
+                "Data Analyst",
+                "AI Tinkerer",
+                "Problem Solver",
+              ]}
+              className="font-semibold"
+            />
           </h2>
           <p className="text-base sm:text-lg text-foreground/70 max-w-xl">
             I craft responsive web experiences and turn data into stories. Currently pursuing B.E. ECE while shipping real-world apps and AI tools.
@@ -80,14 +91,11 @@ const Index = () => {
 
       {/* Highlights */}
       <section className="max-w-6xl mx-auto py-20">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-display font-bold text-center mb-12"
-        >
-          What I <span className="gradient-text">do</span>
-        </motion.h2>
+        <Reveal direction="up">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-center mb-12">
+            What I <span className="gradient-text">do</span>
+          </h2>
+        </Reveal>
         <div className="grid md:grid-cols-2 gap-6">
           {[
             {
@@ -103,20 +111,15 @@ const Index = () => {
               gradient: "from-secondary to-primary",
             },
           ].map((card, i) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="glass-strong rounded-3xl p-8 tilt-card metal-shine"
-            >
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-4 shadow-glow`}>
-                <card.icon className="w-7 h-7 text-primary-foreground" />
+            <Reveal key={card.title} direction="up" delay={i * 0.12}>
+              <div className="glass-strong rounded-3xl p-8 tilt-card metal-shine h-full">
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-4 shadow-glow`}>
+                  <card.icon className="w-7 h-7 text-primary-foreground" />
+                </div>
+                <h3 className="font-display text-2xl font-bold mb-2">{card.title}</h3>
+                <p className="text-muted-foreground">{card.desc}</p>
               </div>
-              <h3 className="font-display text-2xl font-bold mb-2">{card.title}</h3>
-              <p className="text-muted-foreground">{card.desc}</p>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </section>
